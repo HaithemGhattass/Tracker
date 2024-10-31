@@ -22,30 +22,7 @@ struct CreatePlanView: View {
     var body: some View {
         VStack(spacing: 20) {
             // Top Image and Background
-            ZStack {
-                Color.orange.opacity(0.2)
-                    .edgesIgnoringSafeArea(.top)
-                    .frame(height: 200)
-                
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        // Dismiss action or navigate back
-                        dismiss()
-                    }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(.white)
-                            .font(.system(size: 40))
-                            .padding()
-                    }
-                }
-                
-                Image("characterImage") // Replace with the actual image name
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 120, height: 120)
-                    .offset(y: -40)
-            }
+            HeaderView(dismiss: dismiss)
             
             // Title
             Text("Which area of your life do you want to start improving?")
@@ -57,27 +34,12 @@ struct CreatePlanView: View {
             // Grid of Options
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
                 ForEach(options, id: \.0) { option in
-                    VStack {
-                        Image(option.1)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 80, height: 80)
-                            .background(Color.white)
-                            .cornerRadius(15)
-                            .shadow(radius: 5)
-                        
-                        Text(option.0)
-                            .font(.system(size: 16))
-                            .foregroundColor(.gray)
+                    NavigationLink(destination: DetailView(selectedOption: option.0)) {
+                        OptionGridItem(title: option.0, imageName: option.1)
                     }
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(15)
-                    .shadow(radius: 5)
                 }
             }
             .padding(.horizontal, 20)
-            
             Spacer()
         }
         .background(Color(UIColor.systemYellow).opacity(0.1))
