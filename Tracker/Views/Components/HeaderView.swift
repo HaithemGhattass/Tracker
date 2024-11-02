@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct HeaderView: View {
-    var dismiss: DismissAction
 
     var body: some View {
         ZStack {
@@ -17,17 +16,7 @@ struct HeaderView: View {
                 .edgesIgnoringSafeArea(.top)
                 .frame(height: 200)
             
-            HStack {
-                Spacer()
-                Button(action: {
-                    dismiss()
-                }) {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.white)
-                        .font(.system(size: 40))
-                        .padding()
-                }
-            }
+            CloseButtonView()
             
             Image("characterImage") // Replace with the actual image name
                 .resizable()

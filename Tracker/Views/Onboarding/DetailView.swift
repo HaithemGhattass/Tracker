@@ -7,10 +7,25 @@
 
 import SwiftUI
 
+struct TimeOption: Identifiable, Equatable {
+    let id = UUID()
+    let title: String
+}
+
 struct DetailView: View {
     @Environment(\.dismiss) var dismiss
     let selectedOption: String
     
+    // State variable to track the selected time option
+    @State private var selectedTimeOption: TimeOption?
+
+    // Define available time options
+    private let timeOptions = [
+        TimeOption(title: "5 to 10 minutes"),
+        TimeOption(title: "10 to 30 minutes"),
+        TimeOption(title: "30 minutes to 1 hour")
+    ]
+
     var body: some View {
         VStack(spacing: 20) {
             // Top Image and Dismiss Button
@@ -19,17 +34,7 @@ struct DetailView: View {
                     .edgesIgnoringSafeArea(.top)
                     .frame(height: 200)
                 
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        dismiss()
-                    }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(.white)
-                            .font(.system(size: 40))
-                            .padding()
-                    }
-                }
+                CloseButtonView()
                 
                 Image("characterImage") // Replace with the actual image name
                     .resizable()
@@ -39,7 +44,7 @@ struct DetailView: View {
             }
             
             // Title based on selected option
-            Text("How much time would you like to spend every day on \(selectedOption.lowercased())?")
+            Text("How much time would you like to spend every day on your habit?")
                 .font(.system(size: 20, weight: .semibold))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 20)
@@ -47,55 +52,32 @@ struct DetailView: View {
             
             // Time Options
             VStack(spacing: 20) {
-                Button(action: {
-                    // Handle time selection
-                }) {
-                    Text("5 to 10 minutes")
-                        .font(.system(size: 18))
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(15)
-                        .shadow(radius: 5)
-                }
-                
-                Button(action: {
-                    // Handle time selection
-                }) {
-                    Text("10 to 30 minutes")
-                        .font(.system(size: 18))
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.orange.opacity(0.3))
-                        .cornerRadius(15)
-                        .shadow(radius: 5)
-                }
-                
-                Button(action: {
-                    // Handle time selection
-                }) {
-                    Text("30 minutes to 1 hour")
-                        .font(.system(size: 18))
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(15)
-                        .shadow(radius: 5)
+                ForEach(timeOptions) { option in
+                    Button(action: {
+                        selectedTimeOption = option
+                    }) {
+                        Text(option.title)
+                            .font(.system(size: 18, weight: .bold))
+                            .foregroundColor(.gray)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(selectedTimeOption == option ? Color.orange : Color.white)
+                            .cornerRadius(15)
+                            .shadow(radius: 5)
+                    }
                 }
             }
             .padding(.horizontal, 20)
             
             Spacer()
             
-            // Get Plan Button
-            Button(action: {
-                // Handle "Get my plan" action
-            }) {
+            // Get Plan Button wrapped in NavigationLink
+            NavigationLink(destination: SuggestionView()) {
                 Text("Get my plan")
                     .font(.system(size: 18, weight: .semibold))
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.orange.opacity(0.3))
+                    .background(Color.orange)
                     .foregroundColor(.white)
                     .cornerRadius(15)
                     .shadow(radius: 5)

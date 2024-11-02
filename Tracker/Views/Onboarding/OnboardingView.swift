@@ -66,7 +66,7 @@ struct OnboardingView: View {
             
             Spacer()
         }
-        .background(Color(UIColor.systemYellow).opacity(0.1))
+//        .background(Color(UIColor.systemYellow).opacity(0.1))
         .edgesIgnoringSafeArea(.all)
     }
 }

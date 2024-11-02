@@ -6,13 +6,15 @@
 //
 
 import Foundation
-class MainViewModel: ObservableObject {
-    @Published var improvementOptions: [ImprovementOption] = [
-        ImprovementOption(title: "Improve health", imageName: "healthImage"),
-        ImprovementOption(title: "Reduce stress", imageName: "stressImage"),
-        ImprovementOption(title: "Lose weight", imageName: "weightImage"),
-        ImprovementOption(title: "Get more productive", imageName: "productiveImage"),
-        ImprovementOption(title: "Boost energy", imageName: "energyImage"),
-        ImprovementOption(title: "Learn\nsomething", imageName: "learnImage")
+
+class CreatePlanViewModel: ObservableObject {
+    @Published var options: [CreatePlanOptionItem] = [
+        CreatePlanOptionItem(title: "Improve health", imageName: "healthImage"),
+        CreatePlanOptionItem(title: "Reduce stress", imageName: "stressImage"),
+        CreatePlanOptionItem(title: "Lose weight", imageName: "weightImage"),
+        CreatePlanOptionItem(title: "Get more productive", imageName: "productiveImage"),
+        CreatePlanOptionItem(title: "Boost energy", imageName: "energyImage"),
+        CreatePlanOptionItem(title: "Learn\nsomething", imageName: "learnImage")
     ]
 }
+

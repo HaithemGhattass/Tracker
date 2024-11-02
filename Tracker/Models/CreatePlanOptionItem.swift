@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct ImprovementOption: Identifiable {
-    let id = UUID()
+struct CreatePlanOptionItem {
     let title: String
     let imageName: String
 }
