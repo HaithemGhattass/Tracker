@@ -4,9 +4,7 @@
 //
 //  Created by Haithem Ghattas on 2/11/2024.
 //
-import SwiftUI
-
-import SwiftUI
+ import SwiftUI
 
 struct SuggestionView: View {
     @StateObject private var viewModel = SuggestionViewModel()
