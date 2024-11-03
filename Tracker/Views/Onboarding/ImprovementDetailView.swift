@@ -44,6 +44,3 @@ struct ImprovementDetailView: View {
     }
 }
 
-#Preview {
-    ImprovementDetailView(option: CreatePlanOptionItem(title: "Improve health", imageName: "healthImage"))
-}

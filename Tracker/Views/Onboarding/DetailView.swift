@@ -14,7 +14,7 @@ struct TimeOption: Identifiable, Equatable {
 
 struct DetailView: View {
     @Environment(\.dismiss) var dismiss
-    let selectedOption: String
+    let selectedOption: CreatePlanOptionItem
     
     // State variable to track the selected time option
     @State private var selectedTimeOption: TimeOption?
@@ -72,7 +72,7 @@ struct DetailView: View {
             Spacer()
             
             // Get Plan Button wrapped in NavigationLink
-            NavigationLink(destination: SuggestionView()) {
+            NavigationLink(destination: SuggestionView(selectedOption : selectedOption)) {
                 Text("Get my plan")
                     .font(.system(size: 18, weight: .semibold))
                     .frame(maxWidth: .infinity)
@@ -89,6 +89,3 @@ struct DetailView: View {
     }
 }
 
-#Preview {
-    DetailView(selectedOption: "Improve health")
-}

@@ -39,7 +39,7 @@ struct OptionsGridView: View {
     var body: some View {
         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
             ForEach(options, id: \.title) { option in
-                NavigationLink(destination: DetailView(selectedOption: option.title)) {
+                NavigationLink(destination: DetailView(selectedOption: option)) {
                     OptionGridItem(title: option.title, imageName: option.imageName)
                 }
             }

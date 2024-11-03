@@ -10,4 +10,5 @@ import Foundation
 struct CreatePlanOptionItem {
     let title: String
     let imageName: String
+    let habits: [Habit]
 }
