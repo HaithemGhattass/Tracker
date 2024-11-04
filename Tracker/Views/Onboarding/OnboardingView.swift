@@ -51,9 +51,7 @@ struct OnboardingView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 40)
             // "Skip" Button
-            Button(action: {
-                // Action for skipping
-            }) {
+            NavigationLink(destination:    DashboardView() ) {
                 Text("Skip")
                     .font(.system(size: 18, weight: .bold))
                     .foregroundColor(.gray)
@@ -64,9 +62,11 @@ struct OnboardingView: View {
                     .padding(.horizontal, 40)
             }
             
+
+           
             Spacer()
         }
-        .background(Color(UIColor.systemYellow).opacity(0.1))
+//        .background(Color(UIColor.systemYellow).opacity(0.1))
         .edgesIgnoringSafeArea(.all)
     }
 }
