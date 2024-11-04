@@ -31,7 +31,7 @@ struct SuggestionView: View {
                 isInMyPlan: true
             )
             Spacer()
-            NavigationLink(destination: OnboardingView()) {
+            NavigationLink(destination: DashboardView()) {
                 Text("Get started")
                     .font(.system(size: 18, weight: .semibold))
                     .frame(maxWidth: .infinity)
